@@ -3,6 +3,23 @@ pipeline {
 
     stages {
 
+        stage('Debug') {
+            steps {
+                sh '''
+                whoami
+                echo $HOME
+                which aws
+                which kubectl
+
+                ls -la /var/lib/jenkins/.aws
+                ls -la /var/lib/jenkins/.kube
+
+                aws sts get-caller-identity
+                kubectl get nodes
+                '''
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t trend-app .'
@@ -11,9 +28,14 @@ pipeline {
 
         stage('Deploy To Kubernetes') {
             steps {
-                sh 'kubectl apply -f deployment.yaml'
-                sh 'kubectl apply -f service.yaml'
+                sh '''
+                export KUBECONFIG=/var/lib/jenkins/.kube/config
+
+                kubectl apply -f deployment.yaml --validate=false
+                kubectl apply -f service.yaml --validate=false
+                '''
             }
         }
+
     }
 }
