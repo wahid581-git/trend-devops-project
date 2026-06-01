@@ -1,91 +1,96 @@
-DevOps Practice Project – Dist Directory
+# Trend DevOps Project
 
-This repository contains the production-ready build files (dist folder) for DevOps practice and deployment exercises.
+## Project Overview
 
-It is intentionally structured to help learners focus on CI/CD pipelines, hosting, containerization, and infrastructure setup rather than application development.
+This project demonstrates a complete DevOps workflow by deploying the Trend application on AWS using Docker, Jenkins, Kubernetes (EKS), and Terraform.
 
-📁 What This Repository Contains
+## Technologies Used
 
-dist/ – Compiled and production-ready static files
+* AWS EC2
+* AWS EKS
+* Docker
+* DockerHub
+* Jenkins
+* Kubernetes
+* GitHub
+* Terraform
 
-HTML
+## Project Architecture
 
-CSS
+GitHub → Jenkins → Docker Build → DockerHub → Kubernetes Deployment → AWS EKS
 
-JavaScript
+## Docker
 
-Assets (images, fonts, etc.)
+### Build Image
 
-These files are ready to deploy to:
+```bash
+docker build -t wahid581doc/trend-app:v1 .
+```
 
-Web servers (Nginx / Apache)
+### Run Container
 
-Cloud platforms (AWS S3, Azure Blob, GCP Storage)
+```bash
+docker run -d -p 3000:80 trend-app
+```
 
-Containerized environments (Docker + Nginx)
+## Kubernetes Deployment
 
-Kubernetes clusters
+### Deployment
 
-CI/CD pipeline demonstrations
+```bash
+kubectl apply -f deployment.yaml
+```
 
-🎯 Purpose of This Repository
+### Service
 
-This repository is designed for:
+```bash
+kubectl apply -f service.yaml
+```
 
-DevOps beginners
+### Verify
 
-CI/CD practice
+```bash
+kubectl get pods
+kubectl get svc
+```
 
-Deployment pipeline testing
+## EKS Cluster
 
-Docker & Kubernetes deployment exercises
+Cluster Name: trend-cluster
 
-Web server configuration practice
+### Verify Nodes
 
-Reverse proxy and load balancer setup
+```bash
+kubectl get nodes
+```
 
-The goal is to simulate real-world deployment scenarios using already built application files.
+## Jenkins CI/CD
 
-❓ Why is there NO package.json?
+Pipeline Stages:
 
-You may notice that this repository does not include:
+1. Checkout Source Code
+2. Build Docker Image
+3. Push Docker Image
+4. Deploy to Kubernetes
 
-package.json
+## Application URL
 
-node_modules
+LoadBalancer URL:
 
-Source code (src/)
+http://a4d1016a5363244699fb02d436df24e2-571871970.ap-south-1.elb.amazonaws.com
 
-Build tools configuration
+## Screenshots
 
-✅ Reason:
+* EC2 Instance Running
+* Jenkins Dashboard
+* Docker Build
+* DockerHub Repository
+* EKS Cluster
+* Kubernetes Pods
+* Kubernetes Services
+* Jenkins Pipeline Success
+* Application Running
 
-This repository only contains the final production build output (dist), not the development source code.
+## Author
 
-In a typical project:
-
-Developers write source code.
-
-The project is built using tools like:
-
-Node.js
-
-Webpack
-
-Vite
-
-React (or other frameworks)
-
-A dist/ folder is generated.
-
-Only the production build is deployed to servers.
-
-This repository represents step 4 only.
-
-Since this is already the compiled output:
-
-No dependencies are required
-
-No build process is required
-
-No package.json is needed
+Abdul Wahid
