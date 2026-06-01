@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project demonstrates a complete DevOps workflow by deploying the Trend application on AWS using Docker, Jenkins, Kubernetes (EKS), and Terraform.
+This project demonstrates a complete DevOps workflow by deploying the Trend application on AWS using Docker, Jenkins, Kubernetes (EKS) .
 
 ## Technologies Used
 
@@ -13,7 +13,7 @@ This project demonstrates a complete DevOps workflow by deploying the Trend appl
 * Jenkins
 * Kubernetes
 * GitHub
-* Terraform
+  
 
 ## Project Architecture
 
