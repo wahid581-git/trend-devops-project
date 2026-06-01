@@ -8,13 +8,13 @@ pipeline {
                 sh '''
                 whoami
                 echo $HOME
+
                 which aws
                 which kubectl
 
-                ls -la /var/lib/jenkins/.aws
-                ls -la /var/lib/jenkins/.kube
-
+                aws configure list
                 aws sts get-caller-identity
+
                 kubectl get nodes
                 '''
             }
@@ -22,7 +22,9 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t trend-app .'
+                sh '''
+                docker build -t trend-app .
+                '''
             }
         }
 
