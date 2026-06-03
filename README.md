@@ -222,7 +222,7 @@ kubectl create namespace monitoring
 helm install monitoring prometheus-community/kube-prometheus-stack \
 -n monitoring
 
----
+```
 
 ## Project Outcome
 
