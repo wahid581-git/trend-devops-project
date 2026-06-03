@@ -207,6 +207,21 @@ kubectl get svc
 
 Jenkins pipeline execution was used to monitor deployment status and application health.
 
+## Monitoring Setup
+
+Prometheus monitoring stack was deployed in the EKS cluster using Helm.
+
+Commands Used:
+
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+
+kubectl create namespace monitoring
+
+helm install monitoring prometheus-community/kube-prometheus-stack \
+-n monitoring
+
 ---
 
 ## Project Outcome
